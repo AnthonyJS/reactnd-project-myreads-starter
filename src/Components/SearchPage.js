@@ -6,8 +6,22 @@ import * as BooksAPI from '../BooksAPI'
 class SearchPage extends Component {
   state = {}
 
+  shelfBooks = this.props.books
+
+  ensureBookHasCorrectShelf = book => {
+    var shelfBook = this.shelfBooks.filter(item => item.id === book.id)
+
+    if (shelfBook.length > 0) {
+      book.shelf = shelfBook.shelf
+    }
+
+    return book
+  }
+
   searchChange = event => {
     BooksAPI.search(event.target.value, 20).then(books => {
+      books = books.map(this.ensureBookHasCorrectShelf)
+
       this.setState({ books })
     })
   }
@@ -33,6 +47,7 @@ class SearchPage extends Component {
 }
 
 SearchPage.propTypes = {
+  books: PropTypes.array,
   showSearchPageHandler: PropTypes.func.isRequired,
   amendShelfHandler: PropTypes.func.isRequired
 }
