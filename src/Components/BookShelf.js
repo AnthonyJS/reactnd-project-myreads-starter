@@ -1,25 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BooksGrid from './BooksGrid';
 
-class BookShelf extends Component {
-  render() {
-    return (
-      <div className="bookshelf">
-        <h2 className="bookshelf-title">
-          {this.props.title}
-        </h2>
-        <div className="bookshelf-books">
-          <BooksGrid
-            books={this.props.books}
-            shelf={this.props.shelf}
-            amendShelfHandler={this.props.amendShelfHandler}
-          />
-        </div>
-      </div>
-    );
-  }
-}
+const BookShelf = props =>
+  <div className="bookshelf">
+    <h2 className="bookshelf-title">
+      {props.title}
+    </h2>
+    <div className="bookshelf-books">
+      <BooksGrid books={props.books} shelf={props.shelf} amendShelfHandler={props.amendShelfHandler} />
+    </div>
+  </div>;
 
 BookShelf.propTypes = {
   books: PropTypes.array.isRequired,
