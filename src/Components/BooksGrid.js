@@ -8,7 +8,7 @@ class BooksGrid extends Component {
       <ol className="books-grid">
         {this.props.books.map(
           book =>
-            book.shelf === this.props.shelf &&
+            (book.shelf === this.props.shelf || this.props.shelf === 'search') &&
             <li key={book.id}>
               <Book bookData={book} />
             </li>

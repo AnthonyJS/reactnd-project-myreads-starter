@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import BooksGrid from './BooksGrid';
+import * as BooksAPI from '../BooksAPI';
 
 class SearchPage extends Component {
+  state = {};
+
+  searchChange = event => {
+    BooksAPI.search(event.target.value, 20).then(books => {
+      this.setState({ books });
+    });
+  };
+
   render() {
     return (
       <div className="search-books">
@@ -10,11 +20,11 @@ class SearchPage extends Component {
             Close
           </a>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" />
+            <input type="text" placeholder="Search by title or author" onChange={event => this.searchChange(event)} />
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid" />
+          {this.state.books && <BooksGrid books={this.state.books} shelf="search" />}
         </div>
       </div>
     );
