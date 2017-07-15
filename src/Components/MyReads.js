@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import BookShelf from './BookShelf';
+import React from 'react'
+import PropTypes from 'prop-types'
+import BookShelf from './BookShelf'
 
 const MyReads = props =>
   <div className="list-books">
@@ -27,12 +27,12 @@ const MyReads = props =>
     <div className="open-search">
       <a onClick={() => props.showSearchPageHandler(true)}>Add a book</a>
     </div>
-  </div>;
+  </div>
 
 MyReads.propTypes = {
   showSearchPageHandler: PropTypes.func.isRequired,
   books: PropTypes.array.isRequired,
   amendShelfHandler: PropTypes.func.isRequired
-};
+}
 
-export default MyReads;
+export default MyReads

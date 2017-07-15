@@ -1,8 +1,8 @@
-import React from 'react';
-import './App.css';
-import SearchPage from './Components/SearchPage';
-import MyReads from './Components/MyReads';
-import * as BooksAPI from './BooksAPI';
+import React from 'react'
+import './App.css'
+import SearchPage from './Components/SearchPage'
+import MyReads from './Components/MyReads'
+import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends React.Component {
   state = {
@@ -13,26 +13,26 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: true
-  };
+  }
 
-  showSearchPage = visible => this.setState({ showSearchPage: visible });
+  showSearchPage = visible => this.setState({ showSearchPage: visible })
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      this.setState({ books });
-    });
+      this.setState({ books })
+    })
   }
 
   amendShelf = (book, shelf) => {
-    var newShelf = this.state.books.filter(item => item.id !== book.id);
+    var newShelf = this.state.books.filter(item => item.id !== book.id)
 
     if (shelf !== 'none') {
-      book.shelf = shelf;
-      newShelf.push(book);
+      book.shelf = shelf
+      newShelf.push(book)
     }
 
-    this.setState({ books: newShelf });
-  };
+    this.setState({ books: newShelf })
+  }
 
   render() {
     return (
@@ -50,8 +50,8 @@ class BooksApp extends React.Component {
                 amendShelfHandler={this.amendShelf}
               />)}
       </div>
-    );
+    )
   }
 }
 
-export default BooksApp;
+export default BooksApp

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import BooksGrid from './BooksGrid';
-import * as BooksAPI from '../BooksAPI';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import BooksGrid from './BooksGrid'
+import * as BooksAPI from '../BooksAPI'
 
 class SearchPage extends Component {
-  state = {};
+  state = {}
 
   searchChange = event => {
     BooksAPI.search(event.target.value, 20).then(books => {
-      this.setState({ books });
-    });
-  };
+      this.setState({ books })
+    })
+  }
 
   render() {
     return (
@@ -28,13 +28,13 @@ class SearchPage extends Component {
             <BooksGrid books={this.state.books} shelf="search" amendShelfHandler={this.props.amendShelfHandler} />}
         </div>
       </div>
-    );
+    )
   }
 }
 
 SearchPage.propTypes = {
   showSearchPageHandler: PropTypes.func.isRequired,
   amendShelfHandler: PropTypes.func.isRequired
-};
+}
 
-export default SearchPage;
+export default SearchPage

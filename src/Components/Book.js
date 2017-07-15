@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import BookShelfChanger from './BookShelfChanger';
+import React from 'react'
+import PropTypes from 'prop-types'
+import BookShelfChanger from './BookShelfChanger'
 
 const Book = props => {
-  const { shelf } = props.book;
+  const { shelf } = props.book
 
   return (
     <div className="book">
@@ -25,12 +25,12 @@ const Book = props => {
         {props.book.authors}
       </div>
     </div>
-  );
-};
+  )
+}
 
 Book.propTypes = {
   book: PropTypes.object.isRequired,
   amendShelfHandler: PropTypes.func.isRequired
-};
+}
 
-export default Book;
+export default Book

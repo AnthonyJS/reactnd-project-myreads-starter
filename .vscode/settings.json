@@ -4,5 +4,6 @@
   "eslint.run": "onType",
   "prettier.singleQuote": true,
   "editor.formatOnSave": true,
-  "prettier.printWidth": 120
+  "prettier.printWidth": 120,
+  "prettier.semi": false
 }

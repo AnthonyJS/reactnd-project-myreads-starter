@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const BookShelfChanger = props => {
   return (
@@ -14,11 +14,11 @@ const BookShelfChanger = props => {
         <option value="none">None</option>
       </select>
     </div>
-  );
-};
+  )
+}
 
 BookShelfChanger.propTypes = {
   amendShelfHandler: PropTypes.func.isRequired
-};
+}
 
-export default BookShelfChanger;
+export default BookShelfChanger
