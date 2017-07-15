@@ -6,33 +6,17 @@ class BookShelf extends Component {
   render() {
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">Currently Reading</h2>
+        <h2 className="bookshelf-title">
+          {this.props.shelf}
+        </h2>
+
         <div className="bookshelf-books">
           <ol className="books-grid">
-            <li>
-              <Book
-                bookData={{
-                  BookTitle: 'To Kill a Mockingbird',
-                  Authors: 'Harper Lee',
-                  Image:
-                    'http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api',
-                  Width: 128,
-                  Height: 188
-                }}
-              />
-            </li>
-            <li>
-              <Book
-                bookData={{
-                  BookTitle: "Ender's Game",
-                  Authors: 'Orson Scott Card',
-                  Image:
-                    'http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api',
-                  Width: 128,
-                  Height: 188
-                }}
-              />
-            </li>
+            {this.props.books.map(book =>
+              <li key={book.id}>
+                <Book bookData={book} />
+              </li>
+            )}
           </ol>
         </div>
       </div>
@@ -40,6 +24,8 @@ class BookShelf extends Component {
   }
 }
 
-BookShelf.propTypes = {};
+BookShelf.propTypes = {
+  books: PropTypes.array
+};
 
 export default BookShelf;

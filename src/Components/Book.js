@@ -9,25 +9,25 @@ const Book = props => {
         <div
           className="book-cover"
           style={{
-            width: props.bookData.Width,
-            height: props.bookData.Height,
-            backgroundImage: `url("${props.bookData.Image}")`
+            width: 128,
+            height: 188,
+            backgroundImage: `url("${props.bookData.imageLinks.thumbnail}")`
           }}
         />
         <BookShelfChanger />
       </div>
       <div className="book-title">
-        {props.bookData.BookTitle}
+        {props.bookData.title}
       </div>
       <div className="book-authors">
-        {props.bookData.Authors}
+        {props.bookData.authors}
       </div>
     </div>
   );
 };
 
 Book.propTypes = {
-  bookData: PropTypes.object,
+  bookData: PropTypes.object
 };
 
 export default Book;
