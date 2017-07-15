@@ -2,6 +2,7 @@ import React from 'react';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import BookShelf from './Components/BookShelf';
+import SearchPage from './Components/SearchPage';
 
 class BooksApp extends React.Component {
   state = {
@@ -20,23 +21,13 @@ class BooksApp extends React.Component {
     });
   }
 
+  showSearchPage = visible => this.setState({ showSearchPage: visible });
+
   render() {
     return (
       <div className="app">
         {this.state.showSearchPage
-          ? <div className="search-books">
-              <div className="search-books-bar">
-                <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>
-                  Close
-                </a>
-                <div className="search-books-input-wrapper">
-                  <input type="text" placeholder="Search by title or author" />
-                </div>
-              </div>
-              <div className="search-books-results">
-                <ol className="books-grid" />
-              </div>
-            </div>
+          ? <SearchPage closeSearchPageHandler={this.showSearchPage} />
           : <div className="list-books">
               <div className="list-books-title">
                 <h1>MyReads</h1>
