@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import BookShelfChanger from './BookShelfChanger';
 
 const Book = props => {
+  const { shelf } = props.bookData;
+
   return (
     <div className="book">
       <div className="book-top">
@@ -14,7 +16,7 @@ const Book = props => {
             backgroundImage: `url("${props.bookData.imageLinks.thumbnail}")`
           }}
         />
-        <BookShelfChanger />
+        <BookShelfChanger shelf={shelf} />
       </div>
       <div className="book-title">
         {props.bookData.title}
