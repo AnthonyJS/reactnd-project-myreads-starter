@@ -10,7 +10,11 @@ class BookShelf extends Component {
           {this.props.title}
         </h2>
         <div className="bookshelf-books">
-          <BooksGrid books={this.props.books} shelf={this.props.shelf} />
+          <BooksGrid
+            books={this.props.books}
+            shelf={this.props.shelf}
+            amendShelfHandler={this.props.amendShelfHandler}
+          />
         </div>
       </div>
     );
@@ -20,7 +24,8 @@ class BookShelf extends Component {
 BookShelf.propTypes = {
   books: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
-  shelf: PropTypes.string.isRequired
+  shelf: PropTypes.string.isRequired,
+  amendShelfHandler: PropTypes.func.isRequired
 };
 
 export default BookShelf;

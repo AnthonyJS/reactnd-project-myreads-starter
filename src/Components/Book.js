@@ -5,6 +5,10 @@ import BookShelfChanger from './BookShelfChanger';
 const Book = props => {
   const { shelf } = props.bookData;
 
+  const updateShelf = newShelf => {
+    props.amendShelfHandler(props.bookData, newShelf);
+  };
+
   return (
     <div className="book">
       <div className="book-top">
@@ -16,7 +20,7 @@ const Book = props => {
             backgroundImage: `url("${props.bookData.imageLinks.thumbnail}")`
           }}
         />
-        <BookShelfChanger shelf={shelf} />
+        <BookShelfChanger shelf={shelf} amendShelfHandler={updateShelf} />
       </div>
       <div className="book-title">
         {props.bookData.title}
@@ -29,7 +33,8 @@ const Book = props => {
 };
 
 Book.propTypes = {
-  bookData: PropTypes.object
+  bookData: PropTypes.object,
+  amendShelfHandler: PropTypes.func.isRequired
 };
 
 export default Book;

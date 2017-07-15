@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './App.css';
 import SearchPage from './Components/SearchPage';
 import MyReads from './Components/MyReads';
@@ -24,13 +23,32 @@ class BooksApp extends React.Component {
     });
   }
 
+  amendShelf = (book, shelf) => {
+    var newShelf = this.state.books.filter(item => item.id !== book.id);
+
+    if (shelf !== 'none') {
+      book.shelf = shelf;
+      newShelf.push(book);
+    }
+
+    this.setState({ books: newShelf });
+  };
+
   render() {
     return (
       <div className="app">
         {this.state.books &&
           (this.state.showSearchPage
-            ? <SearchPage showSearchPageHandler={this.showSearchPage} books={this.state.books} />
-            : <MyReads showSearchPageHandler={this.showSearchPage} books={this.state.books} />)}
+            ? <SearchPage
+                showSearchPageHandler={this.showSearchPage}
+                books={this.state.books}
+                amendShelfHandler={this.amendShelf}
+              />
+            : <MyReads
+                showSearchPageHandler={this.showSearchPage}
+                books={this.state.books}
+                amendShelfHandler={this.amendShelf}
+              />)}
       </div>
     );
   }

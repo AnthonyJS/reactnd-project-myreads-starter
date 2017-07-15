@@ -11,9 +11,24 @@ class MyReads extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <BookShelf shelf="currentlyReading" title="Currently Reading" books={this.props.books} />
-            <BookShelf shelf="wantToRead" title="Want to Read" books={this.props.books} />
-            <BookShelf shelf="read" title="Read" books={this.props.books} />
+            <BookShelf
+              shelf="currentlyReading"
+              title="Currently Reading"
+              books={this.props.books}
+              amendShelfHandler={this.props.amendShelfHandler}
+            />
+            <BookShelf
+              shelf="wantToRead"
+              title="Want to Read"
+              books={this.props.books}
+              amendShelfHandler={this.props.amendShelfHandler}
+            />
+            <BookShelf
+              shelf="read"
+              title="Read"
+              books={this.props.books}
+              amendShelfHandler={this.props.amendShelfHandler}
+            />
           </div>
         </div>
         <div className="open-search">
@@ -26,7 +41,8 @@ class MyReads extends Component {
 
 MyReads.propTypes = {
   showSearchPageHandler: PropTypes.func.isRequired,
-  books: PropTypes.array.isRequired
+  books: PropTypes.array.isRequired,
+  amendShelfHandler: PropTypes.func.isRequired
 };
 
 export default MyReads;

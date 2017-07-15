@@ -24,7 +24,8 @@ class SearchPage extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          {this.state.books && <BooksGrid books={this.state.books} shelf="search" />}
+          {this.state.books &&
+            <BooksGrid books={this.state.books} shelf="search" amendShelfHandler={this.props.amendShelfHandler} />}
         </div>
       </div>
     );
@@ -32,7 +33,8 @@ class SearchPage extends Component {
 }
 
 SearchPage.propTypes = {
-  showSearchPageHandler: PropTypes.func.isRequired
+  showSearchPageHandler: PropTypes.func.isRequired,
+  amendShelfHandler: PropTypes.func.isRequired
 };
 
 export default SearchPage;
