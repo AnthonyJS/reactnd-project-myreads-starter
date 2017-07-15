@@ -6,7 +6,7 @@ class SearchPage extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search" onClick={() => this.props.closeSearchPageHandler(false)}>
+          <a className="close-search" onClick={() => this.props.showSearchPageHandler(false)}>
             Close
           </a>
           <div className="search-books-input-wrapper">
@@ -22,7 +22,7 @@ class SearchPage extends Component {
 }
 
 SearchPage.propTypes = {
-  closeSearchPageHandler: PropTypes.func.isRequired
+  showSearchPageHandler: PropTypes.func.isRequired
 };
 
 export default SearchPage;

@@ -1,8 +1,9 @@
 import React from 'react';
-import * as BooksAPI from './BooksAPI';
+
 import './App.css';
-import BookShelf from './Components/BookShelf';
 import SearchPage from './Components/SearchPage';
+import MyReads from './Components/MyReads';
+import * as BooksAPI from './BooksAPI';
 
 class BooksApp extends React.Component {
   state = {
@@ -15,35 +16,21 @@ class BooksApp extends React.Component {
     showSearchPage: false
   };
 
+  showSearchPage = visible => this.setState({ showSearchPage: visible });
+
   componentDidMount() {
     BooksAPI.getAll().then(books => {
       this.setState({ books });
     });
   }
 
-  showSearchPage = visible => this.setState({ showSearchPage: visible });
-
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage
-          ? <SearchPage closeSearchPageHandler={this.showSearchPage} />
-          : <div className="list-books">
-              <div className="list-books-title">
-                <h1>MyReads</h1>
-              </div>
-              <div className="list-books-content">
-                {this.state.books &&
-                  <div>
-                    <BookShelf shelf="currentlyReading" title="Currently Reading" books={this.state.books} />
-                    <BookShelf shelf="wantToRead" title="Want to Read" books={this.state.books} />
-                    <BookShelf shelf="read" title="Read" books={this.state.books} />
-                  </div>}
-              </div>
-              <div className="open-search">
-                <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-              </div>
-            </div>}
+        {this.state.books &&
+          (this.state.showSearchPage
+            ? <SearchPage showSearchPageHandler={this.showSearchPage} books={this.state.books} />
+            : <MyReads showSearchPageHandler={this.showSearchPage} books={this.state.books} />)}
       </div>
     );
   }
