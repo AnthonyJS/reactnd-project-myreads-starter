@@ -9,29 +9,25 @@ const Book = props => {
         <div
           className="book-cover"
           style={{
-            width: props.Width,
-            height: props.Height,
-            backgroundImage: `url("${props.Image}")`
+            width: props.bookData.Width,
+            height: props.bookData.Height,
+            backgroundImage: `url("${props.bookData.Image}")`
           }}
         />
         <BookShelfChanger />
       </div>
       <div className="book-title">
-        {props.BookTitle}
+        {props.bookData.BookTitle}
       </div>
       <div className="book-authors">
-        {props.Authors}
+        {props.bookData.Authors}
       </div>
     </div>
   );
 };
 
 Book.propTypes = {
-  BookTitle: PropTypes.string.isRequired,
-  Authors: PropTypes.string.isRequired,
-  Image: PropTypes.string.isRequired,
-  Width: PropTypes.number.isRequired,
-  Height: PropTypes.number.isRequired
+  bookData: PropTypes.object,
 };
 
 export default Book;
