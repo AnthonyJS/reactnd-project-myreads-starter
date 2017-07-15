@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import BookShelfChanger from './BookShelfChanger';
 
 const Book = props => {
-  const { shelf } = props.bookData;
-
-  const updateShelf = newShelf => {
-    props.amendShelfHandler(props.bookData, newShelf);
-  };
+  const { shelf } = props.book;
 
   return (
     <div className="book">
@@ -17,23 +13,23 @@ const Book = props => {
           style={{
             width: 128,
             height: 188,
-            backgroundImage: `url("${props.bookData.imageLinks.thumbnail}")`
+            backgroundImage: `url("${props.book.imageLinks.thumbnail}")`
           }}
         />
-        <BookShelfChanger shelf={shelf} amendShelfHandler={updateShelf} />
+        <BookShelfChanger shelf={shelf} amendShelfHandler={props.amendShelfHandler} book={props.book} />
       </div>
       <div className="book-title">
-        {props.bookData.title}
+        {props.book.title}
       </div>
       <div className="book-authors">
-        {props.bookData.authors}
+        {props.book.authors}
       </div>
     </div>
   );
 };
 
 Book.propTypes = {
-  bookData: PropTypes.object,
+  book: PropTypes.object.isRequired,
   amendShelfHandler: PropTypes.func.isRequired
 };
 

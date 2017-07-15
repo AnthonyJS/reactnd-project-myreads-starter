@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const BookShelfChanger = props => {
   return (
     <div className="book-shelf-changer">
-      <select value={props.shelf} onChange={event => props.amendShelfHandler(event.target.value)}>
+      <select value={props.shelf} onChange={event => props.amendShelfHandler(props.book, event.target.value)}>
         <option value="none" disabled>
           Move to...
         </option>

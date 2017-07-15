@@ -10,7 +10,7 @@ class BooksGrid extends Component {
           book =>
             (book.shelf === this.props.shelf || this.props.shelf === 'search') &&
             <li key={book.id}>
-              <Book bookData={book} amendShelfHandler={this.props.amendShelfHandler} />
+              <Book book={book} amendShelfHandler={this.props.amendShelfHandler} />
             </li>
         )}
       </ol>
