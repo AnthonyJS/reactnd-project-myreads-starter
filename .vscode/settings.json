@@ -1,0 +1,8 @@
+{
+  "editor.tabSize": 4,
+  "git.enableSmartCommit": true,
+  "eslint.run": "onType",
+  "prettier.singleQuote": true,
+  "editor.formatOnSave": true,
+  "prettier.printWidth": 120
+}
