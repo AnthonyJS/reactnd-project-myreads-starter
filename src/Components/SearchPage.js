@@ -49,7 +49,6 @@ class SearchPage extends Component {
 
 SearchPage.propTypes = {
   books: PropTypes.array,
-  showSearchPageHandler: PropTypes.func.isRequired,
   amendShelfHandler: PropTypes.func.isRequired
 }
 
