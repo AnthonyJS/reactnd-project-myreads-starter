@@ -9,6 +9,25 @@ class SearchPage extends Component {
 
   shelfBooks = this.props.books
 
+  /**
+  * @description Calls the search API each time the user updates the search term in the 
+  * text box, and adds results to state
+  * @param {event} event
+  * @returns void
+  */
+  searchStringChangeHandler = event => {
+    BooksAPI.search(event.target.value, 20).then(books => {
+      books = books.map(this.ensureBookHasCorrectShelf)
+
+      this.setState({ books })
+    })
+  }
+
+  /**
+  * @description Ensures that if the book is already on a shelf, the search results get updated with this info.
+  * @param {object} book
+  * @returns void
+  */
   ensureBookHasCorrectShelf = book => {
     var shelfBook = this.shelfBooks.filter(item => item.id === book.id)
 
@@ -19,14 +38,6 @@ class SearchPage extends Component {
     return book
   }
 
-  searchChange = event => {
-    BooksAPI.search(event.target.value, 20).then(books => {
-      books = books.map(this.ensureBookHasCorrectShelf)
-
-      this.setState({ books })
-    })
-  }
-
   render() {
     return (
       <div className="search-books">
@@ -35,7 +46,11 @@ class SearchPage extends Component {
             Close
           </Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" onChange={event => this.searchChange(event)} />
+            <input
+              type="text"
+              placeholder="Search by title or author"
+              onChange={event => this.searchStringChangeHandler(event)}
+            />
           </div>
         </div>
         <div className="search-books-results">

@@ -14,7 +14,13 @@ class BooksApp extends React.Component {
     })
   }
 
-  amendShelf = (book, shelf) => {
+  /**
+* @description Adds two numbers
+* @param {number} a
+* @param {number} b
+* @returns {number} Sum of a and b
+*/
+  amendShelfForBook = (book, shelf) => {
     var newShelf = this.state.books.filter(item => item.id !== book.id)
 
     if (shelf !== 'none') {
@@ -35,11 +41,11 @@ class BooksApp extends React.Component {
             <Route
               path="/"
               exact
-              render={() => <MyReads books={this.state.books} amendShelfHandler={this.amendShelf} />}
+              render={() => <MyReads books={this.state.books} amendShelfHandler={this.amendShelfForBook} />}
             />
             <Route
               path="/search/"
-              render={() => <SearchPage books={this.state.books} amendShelfHandler={this.amendShelf} />}
+              render={() => <SearchPage books={this.state.books} amendShelfHandler={this.amendShelfForBook} />}
             />
           </div>}
       </div>
