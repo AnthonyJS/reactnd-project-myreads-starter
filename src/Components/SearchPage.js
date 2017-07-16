@@ -40,7 +40,7 @@ class SearchPage extends Component {
         </div>
         <div className="search-books-results">
           {this.state.books &&
-            <BooksGrid books={this.state.books} shelf="search" amendShelfHandler={this.props.amendShelfHandler} />}
+            <BooksGrid books={this.state.books} isSearch={true} amendShelfHandler={this.props.amendShelfHandler} />}
         </div>
       </div>
     )

@@ -35,11 +35,11 @@ class BooksApp extends React.Component {
             <Route
               path="/"
               exact
-              render={props => <MyReads books={this.state.books} amendShelfHandler={this.amendShelf} />}
+              render={() => <MyReads books={this.state.books} amendShelfHandler={this.amendShelf} />}
             />
             <Route
               path="/search/"
-              render={props => <SearchPage books={this.state.books} amendShelfHandler={this.amendShelf} />}
+              render={() => <SearchPage books={this.state.books} amendShelfHandler={this.amendShelf} />}
             />
           </div>}
       </div>

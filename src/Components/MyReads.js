@@ -12,13 +12,13 @@ const MyReads = props =>
       <div>
         <BookShelf
           shelf="currentlyReading"
-          title="Currently Reading"
+          title="Currently reading"
           books={props.books}
           amendShelfHandler={props.amendShelfHandler}
         />
         <BookShelf
           shelf="wantToRead"
-          title="Want to Read"
+          title="Want to read"
           books={props.books}
           amendShelfHandler={props.amendShelfHandler}
         />
@@ -26,7 +26,7 @@ const MyReads = props =>
       </div>
     </div>
     <div className="open-search">
-      <Link to={'/search/'} activeClassName="active">
+      <Link to={'/search/'} className="active">
         Add a book
       </Link>
     </div>
