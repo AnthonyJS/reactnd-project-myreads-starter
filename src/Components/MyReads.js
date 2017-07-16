@@ -29,12 +29,10 @@ const MyReads = props =>
       <Link to={'/search/'} activeClassName="active">
         Add a book
       </Link>
-      {/*<a onClick={() => props.showSearchPageHandler(true)}>Add a book</a>*/}
     </div>
   </div>
 
 MyReads.propTypes = {
-  showSearchPageHandler: PropTypes.func.isRequired,
   books: PropTypes.array.isRequired,
   amendShelfHandler: PropTypes.func.isRequired
 }
