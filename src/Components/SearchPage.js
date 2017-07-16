@@ -14,10 +14,15 @@ class SearchPage extends Component {
   * @returns void
   */
   searchStringChangeHandler = event => {
-    BooksAPI.search(event.target.value, 20).then(books => {
-      books = books.map(this.ensureBookHasCorrectShelf)
+    BooksAPI.search(event.target.value, 20).then(searchResultBooks => {
+      if (!searchResultBooks || searchResultBooks.error) {
+        this.setState({ searchResultBooks: null })
+        return
+      }
 
-      this.setState({ books })
+      searchResultBooks = searchResultBooks.map(this.ensureBookHasCorrectShelf)
+
+      this.setState({ searchResultBooks })
     })
   }
 
@@ -52,8 +57,12 @@ class SearchPage extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          {this.state.books &&
-            <BooksGrid books={this.state.books} isSearch={true} amendShelfHandler={this.props.amendShelfHandler} />}
+          {this.state.searchResultBooks &&
+            <BooksGrid
+              books={this.state.searchResultBooks}
+              isSearch={true}
+              amendShelfHandler={this.props.amendShelfHandler}
+            />}
         </div>
       </div>
     )
