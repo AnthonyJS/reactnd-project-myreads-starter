@@ -34,9 +34,7 @@ class SearchPage extends Component {
   ensureBookHasCorrectShelf = book => {
     const bookOnShelf = this.props.booksOnShelves.filter(item => item.id === book.id)[0]
 
-    if (bookOnShelf) {
-      book.shelf = bookOnShelf.shelf
-    }
+    book.shelf = bookOnShelf ? bookOnShelf.shelf : ''
 
     return book
   }

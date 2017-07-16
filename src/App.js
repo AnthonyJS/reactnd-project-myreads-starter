@@ -23,8 +23,9 @@ class BooksApp extends React.Component {
   amendShelfForBook = (book, shelf) => {
     var updatedBooksOnShelves = this.state.books.filter(item => item.id !== book.id)
 
+    book.shelf = shelf
+
     if (shelf !== 'none') {
-      book.shelf = shelf
       updatedBooksOnShelves.push(book)
     }
 
