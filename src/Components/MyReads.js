@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
+import { Link } from 'react-router-dom'
 
 const MyReads = props =>
   <div className="list-books">
@@ -25,7 +26,10 @@ const MyReads = props =>
       </div>
     </div>
     <div className="open-search">
-      <a onClick={() => props.showSearchPageHandler(true)}>Add a book</a>
+      <Link to={'/search/'} activeClassName="active">
+        Add a book
+      </Link>
+      {/*<a onClick={() => props.showSearchPageHandler(true)}>Add a book</a>*/}
     </div>
   </div>
 

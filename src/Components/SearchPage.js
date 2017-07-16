@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import BooksGrid from './BooksGrid'
+import { Link } from 'react-router-dom'
 import * as BooksAPI from '../BooksAPI'
 
 class SearchPage extends Component {
@@ -30,9 +31,9 @@ class SearchPage extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search" onClick={() => this.props.showSearchPageHandler(false)}>
+          <Link to={'/'} className="close-search">
             Close
-          </a>
+          </Link>
           <div className="search-books-input-wrapper">
             <input type="text" placeholder="Search by title or author" onChange={event => this.searchChange(event)} />
           </div>
