@@ -21,14 +21,14 @@ class BooksApp extends React.Component {
   * @returns void
   */
   amendShelfForBook = (book, shelf) => {
-    var newShelf = this.state.books.filter(item => item.id !== book.id)
+    var updatedBooksOnShelves = this.state.books.filter(item => item.id !== book.id)
 
     if (shelf !== 'none') {
       book.shelf = shelf
-      newShelf.push(book)
+      updatedBooksOnShelves.push(book)
     }
 
-    this.setState({ books: newShelf })
+    this.setState({ books: updatedBooksOnShelves })
 
     BooksAPI.update(book, shelf)
   }
@@ -45,7 +45,7 @@ class BooksApp extends React.Component {
             />
             <Route
               path="/search/"
-              render={() => <SearchPage books={this.state.books} amendShelfHandler={this.amendShelfForBook} />}
+              render={() => <SearchPage booksOnShelves={this.state.books} amendShelfHandler={this.amendShelfForBook} />}
             />
           </div>}
       </div>

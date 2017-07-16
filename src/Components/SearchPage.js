@@ -7,8 +7,6 @@ import * as BooksAPI from '../BooksAPI'
 class SearchPage extends Component {
   state = {}
 
-  shelfBooks = this.props.books
-
   /**
   * @description Calls the search API each time the user updates the search term in the 
   * text box, and adds results to state
@@ -26,13 +24,13 @@ class SearchPage extends Component {
   /**
   * @description Ensures that if the book is already on a shelf, the search results get updated with this info.
   * @param {object} book
-  * @returns void
+  * @returns {object} book
   */
   ensureBookHasCorrectShelf = book => {
-    var shelfBook = this.shelfBooks.filter(item => item.id === book.id)
+    const bookOnShelf = this.props.booksOnShelves.filter(item => item.id === book.id)[0]
 
-    if (shelfBook.length > 0) {
-      book.shelf = shelfBook.shelf
+    if (bookOnShelf) {
+      book.shelf = bookOnShelf.shelf
     }
 
     return book
@@ -63,7 +61,7 @@ class SearchPage extends Component {
 }
 
 SearchPage.propTypes = {
-  books: PropTypes.array,
+  booksOnShelves: PropTypes.array,
   amendShelfHandler: PropTypes.func.isRequired
 }
 
