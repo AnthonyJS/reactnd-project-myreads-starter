@@ -15,11 +15,11 @@ class BooksApp extends React.Component {
   }
 
   /**
-* @description Adds two numbers
-* @param {number} a
-* @param {number} b
-* @returns {number} Sum of a and b
-*/
+  * @description Adds, updates or removes a book from a shelf
+  * @param {object} book
+  * @param {string} shelf
+  * @returns void
+  */
   amendShelfForBook = (book, shelf) => {
     var newShelf = this.state.books.filter(item => item.id !== book.id)
 
